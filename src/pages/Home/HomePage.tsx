@@ -1,5 +1,4 @@
-import { Gif } from "../../components/Gif/Gif"
-import { Grid } from "../../components/Grid/Grid"
+import { GifGrid } from "../../components/GifGrid/GifGrid"
 import { SearchInput } from "../../components/SearchInput/SearchInput"
 import { useGifs } from "../../hooks/useGifs"
 
@@ -12,18 +11,7 @@ export const HomePage = () => {
   return (
     <section>
       <SearchInput />
-      <Grid>
-        {
-          gifs.map(gif => (
-            <Gif 
-              title={gif.title}
-              url={gif.url}
-              key={gif.id}
-              id={gif.id as string}
-            />
-          ))
-        }
-      </Grid>
+      <GifGrid gifs={gifs} />
     </section>
   )
 }

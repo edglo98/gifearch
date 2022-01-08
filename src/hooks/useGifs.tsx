@@ -6,12 +6,14 @@ interface OptionsProps {
   offset: number
 }
 
+export interface IGif {
+  title: string;
+  url: string;
+  id: string | number;
+}
+
 interface GifsResultOwn {
-  data: {
-    title: string;
-    url: string;
-    id: string | number;
-  }[]; // Giphy no exporta la clase IGif... 
+  data: IGif[]; // Giphy no exporta la clase IGif... 
   pagination: GifsResult['pagination'];
   meta: GifsResult['meta'];
 }

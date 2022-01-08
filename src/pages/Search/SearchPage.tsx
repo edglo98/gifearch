@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { GifGrid } from '../../components/GifGrid/GifGrid';
 import { useGifs } from '../../hooks/useGifs';
 
 export const SearchPage = () => {
@@ -11,11 +12,7 @@ export const SearchPage = () => {
   return (
     <div>
       <h1>query: { query }</h1>
-      {
-        gifs.map(gif => (
-          <img key={gif.id} src={gif.images.original.url} alt={gif.title} />
-        ))
-      }
+      <GifGrid gifs={gifs} />
     </div>
   )
 }
