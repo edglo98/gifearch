@@ -1,0 +1,58 @@
+.appbar {
+  background-color: var(--main-bg-color);
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 64px;
+  padding: 0 16px;
+  width: 100%;
+}
+
+.nav {
+  height: 100%;
+}
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: inherit;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  height: inherit;
+}
+
+.nav a {
+  color: var(--main-text-no-select-color);
+  font-size: 18px;
+  text-decoration: none;
+  height: inherit;
+  width: 7rem;
+  display: grid;
+  place-items: center;
+}
+
+.logo {
+  flex: 1;
+}
+
+.logo a {
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: bold;
+  color: #FA9039;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  padding-bottom: 5px;
+  margin-bottom: -5px;
+  background-image: linear-gradient(45deg,#FDBD2D,#FA9039 50%,#FD4E2D); 
+}

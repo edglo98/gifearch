@@ -13,7 +13,19 @@ export const searchGifs = (
   query: string, 
   options: SearchOptions = {
     offset: 0, 
-    limit: 10, 
+    limit: 18, 
     lang: "es"
   }
 ) => gf.search(query, options)
+  .then(response => 
+    ({
+      ...response,
+      data: response.data.map(g => 
+        ({
+          url: g.images.downsized_medium.url, 
+          title: g.title, 
+          id: g.id
+        })
+      ),
+    })
+  )

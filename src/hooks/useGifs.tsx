@@ -6,29 +6,43 @@ interface OptionsProps {
   offset: number
 }
 
-const initialState: GifsResult = {
+interface GifsResultOwn {
+  data: {
+    title: string;
+    url: string;
+    id: string | number;
+  }[]; // Giphy no exporta la clase IGif... 
+  pagination: GifsResult['pagination'];
+  meta: GifsResult['meta'];
+}
+
+const initialState: GifsResultOwn = {
   data: [],
   pagination: {
     total_count: 0,
     count: 0,
     offset: 0,
   },
-  meta: { // copilot metadata (not used) jajaja equisde
+  meta: {
     status: 200,
     msg: "OK",
     response_id: "5e8f8f9b9f9e600020c7d8f8",
   },
 }
 
-export const useGifs = (query: string = 'gatitos', options?: OptionsProps) => {
-  const [gifs, setGifs] = useState<GifsResult>(initialState)
+export const useGifs = (query: string | null = null, options?: OptionsProps) => {
+  const [gifs, setGifs] = useState<GifsResultOwn>(initialState)
   const [error, setError] = useState<ErrorResult>()
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    const keyword = query || localStorage.getItem('lastKeyword') || "gatitos"
     setLoading(true)
-    searchGifs(query, options)
-      .then(setGifs)
+    searchGifs(keyword, options)
+      .then(res => {
+        setGifs(res)
+        localStorage.setItem('lastKeyword', keyword)
+      })
       .catch(setError)
       .finally(() => setLoading(false))
   }, [query, options])

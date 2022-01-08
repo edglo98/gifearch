@@ -1,0 +1,74 @@
+.gif {
+  height: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.gif a {
+  display: block;
+  height: 100%;
+  position: relative;
+}
+
+.gif img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gif picture{
+  position: relative;
+  height: inherit;
+  display: inherit;
+}
+
+.gif picture::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(180deg, 
+    rgba(7, 49, 58, 0) 20%, 
+    rgba(17, 17, 17, 0.6) 100%
+  );
+}
+
+.gif label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0px 10px;
+  font-size: .8rem;
+  color: white;
+}
+
+.gif:nth-child(11n+1) {
+  grid-column: span 1;
+}
+
+.gif:nth-child(11n+4) {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.gif:nth-child(11n+6) {
+  grid-column: span 3;
+  grid-row: span 1;
+}
+
+.gif:nth-child(11n+7) {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.gif:nth-child(11n+8) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.gif:nth-child(11n+9) {
+  grid-row: span 3;
+}
