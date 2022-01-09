@@ -9,9 +9,18 @@
   width: 100%;
 }
 
+.appcontainer {
+  display: flex;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  height: 100%;
+}
+
 .nav {
   height: 100%;
 }
+
 .nav ul {
   display: flex;
   flex-direction: row;
@@ -54,5 +63,7 @@
   background-clip: text;
   padding-bottom: 5px;
   margin-bottom: -5px;
-  background-image: linear-gradient(45deg,#FDBD2D,#FA9039 50%,#FD4E2D); 
+  background-image: linear-gradient(45deg,#FDBD2D,#FA9039 50%,#FD4E2D);
+  height: 100%;
+  line-height: 2;
 }
