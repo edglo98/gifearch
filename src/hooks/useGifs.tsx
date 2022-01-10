@@ -1,41 +1,17 @@
-import { ErrorResult, GifsResult } from "@giphy/js-fetch-api"
+import { ErrorResult } from "@giphy/js-fetch-api"
 import { useEffect, useState } from "react"
 import { searchGifs } from "../services/giphy"
+import { useGlobalGifs } from "./useGlobalGifs"
 
 interface OptionsProps {
   offset: number
 }
 
-export interface IGif {
-  title: string;
-  url: string;
-  id: string | number;
-}
-
-interface GifsResultOwn {
-  data: IGif[]; // Giphy no exporta la clase IGif... 
-  pagination: GifsResult['pagination'];
-  meta: GifsResult['meta'];
-}
-
-const initialState: GifsResultOwn = {
-  data: [],
-  pagination: {
-    total_count: 0,
-    count: 0,
-    offset: 0,
-  },
-  meta: {
-    status: 200,
-    msg: "OK",
-    response_id: "5e8f8f9b9f9e600020c7d8f8",
-  },
-}
-
 export const useGifs = (query: string | null = null, options?: OptionsProps) => {
-  const [gifs, setGifs] = useState<GifsResultOwn>(initialState)
+  // const [gifs, setGifs] = useState<GifsResultOwn>(initialState)
   const [error, setError] = useState<ErrorResult>()
   const [loading, setLoading] = useState(false)
+  const { gifs, setGifs } = useGlobalGifs()
 
   useEffect(() => {
     const keyword = query || localStorage.getItem('lastKeyword') || "gatitos"

@@ -1,4 +1,4 @@
-import { IGif } from "../../hooks/useGifs"
+import { IGif } from "../../interfaces/gifs"
 import { Gif } from "../Gif/Gif"
 import { Grid } from "../Grid/Grid"
 
