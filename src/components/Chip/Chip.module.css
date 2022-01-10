@@ -1,0 +1,15 @@
+.chip {
+  display: flex;
+  align-items: center;
+  margin: 3px;
+  padding: 0px 1rem;
+  border-radius: 4px;
+  background-color: #f5f5f5; /*Cambiar dinamicamente*/
+  color: #333; /*Cambiar dinamicamente*/
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.chip p {
+  margin: .6rem;
+}
