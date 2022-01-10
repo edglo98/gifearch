@@ -1,13 +1,23 @@
-import { GiphyFetch, SearchOptions, TrendingOptions } from "@giphy/js-fetch-api";
+import { GiphyFetch, SearchOptions } from "@giphy/js-fetch-api";
 
-const gf = new GiphyFetch(import.meta.env.VITE_GIPHY_API_KEY as string)
+const API_KEY = import.meta.env.VITE_GIPHY_API_KEY as string
+const gf = new GiphyFetch(API_KEY)
 
-export const trendingGifs = (
-  options: TrendingOptions = {
-    offset: 0, 
-    limit: 10,
-  }
-) => gf.trending(options)
+const getPath = (path: string) => {
+  const pathToUSe = path.startsWith("/") ? path : `/${path}`;
+  const includeApiKey = pathToUSe.includes("?") ? `&api_key=${API_KEY}` : `?api_key=${API_KEY}`;
+  
+  return 'http://api.giphy.com/v1' + pathToUSe + includeApiKey
+}
+
+export const trendingSearchTerms = () => window
+  .fetch(getPath('trending/searches'), {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  })
+  .then(res => res.json())
 
 export const searchGifs = (
   query: string, 
