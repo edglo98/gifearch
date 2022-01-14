@@ -24,7 +24,7 @@ export const searchGifs = (
   options: SearchOptions = {
     offset: 0, 
     limit: 18, 
-    lang: "es"
+    lang: "es",
   }
 ) => gf.search(query, options)
   .then(response => 

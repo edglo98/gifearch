@@ -17,7 +17,7 @@ const initialState: GifsResultOwn = {
 
 interface GifContextProps {
   gifs: GifsResultOwn;
-  setGifs: (gifs: GifsResultOwn) => void;
+  setGifs: React.Dispatch<React.SetStateAction<GifsResultOwn>>;
 }
 
 export const GifContext = createContext<GifContextProps>({} as GifContextProps);

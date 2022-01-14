@@ -4,15 +4,18 @@ import { useGifs } from '../../hooks/useGifs';
 
 export const SearchPage = () => {
   const {query} = useParams();
-  const {data: gifs, error, loading} = useGifs(query)
-
-  if(error) return <div>Error: {error.message}</div>
-  if(loading) return <div>Loading...</div>
-
+  const {data: gifs, error, loading, loadingNext, handleNextPage} = useGifs(query)
+  
   return (
     <div>
-      <h1>query: { query }</h1>
-      <GifGrid gifs={gifs} />
+      <h1>Busqueda de <b>{ query }</b></h1>
+      <GifGrid gifs={gifs} loading={loading} error={error} />
+      <div>
+        {loadingNext && <p>Cargando más...</p>}
+      </div>
+      <button onClick={handleNextPage}>
+        Cargar más
+      </button>
     </div>
   )
 }
