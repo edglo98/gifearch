@@ -1,7 +1,7 @@
 import { GifGrid } from "../../components/GifGrid/GifGrid"
+import { LazyTrendsStack } from "../../components/LazyTrendsStack/LazyTrendsStack"
 import { SearchInput } from "../../components/SearchInput/SearchInput"
 import { useGifs } from "../../hooks/useGifs"
-import { LazyTrendsStack, TrendsStack } from "../../components/TrendsStack/TrendsStack"
 
 export const HomePage = () => {
   const {data: gifs, error: gifsError, loading: gifsLoading} = useGifs()
