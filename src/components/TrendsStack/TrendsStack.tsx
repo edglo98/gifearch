@@ -16,33 +16,47 @@ export const TrendsStack = () => {
   )
 }
 
-export const LazyTrendsStack = () => {
-  const [show, setShow] = useState(false)
-  const lazyRef = useRef(null)
+
+interface useNearProps {
+  marginForIntersect?: string
+}
+
+const useNearScreen = <T extends HTMLElement>({marginForIntersect = '100px'}: useNearProps = {}) => {
+  const [isNear, setIsNear] = useState(false)
+  const componentRef = useRef<T>(null)
 
   useEffect(() => {
     const onChange: IntersectionObserverCallback = (entries, observer)  => {
       const [trendsComp] = entries
       if(trendsComp.isIntersecting) {
-        setShow(true)
+        setIsNear(true)
         observer.disconnect()
       }
     }
 
     const observer = new IntersectionObserver(onChange, {
-      rootMargin: '0px',
+      rootMargin: marginForIntersect,
     })
 
-    if(lazyRef.current) {
-      observer.observe(lazyRef.current)
+    if(componentRef.current) {
+      observer.observe(componentRef.current)
     }
 
-    return () => observer.disconnect()
+    return () => observer.disconnect() 
   }, [])
 
+  return {
+    componentRef,
+    isNear,
+  }
+}
+
+export const LazyTrendsStack = () => {
+  const {componentRef, isNear} = useNearScreen<HTMLDivElement>()
+
   return (
-    <div ref={lazyRef} >
-      {show && <TrendsStack />}
+    <div ref={componentRef} >
+      {isNear && <TrendsStack />}
     </div>
   )
 }
