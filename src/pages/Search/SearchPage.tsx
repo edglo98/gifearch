@@ -4,7 +4,13 @@ import { useGifs } from '../../hooks/useGifs';
 
 export const SearchPage = () => {
   const {query} = useParams();
-  const {data: gifs, error, loading, loadingNext, handleNextPage} = useGifs(query)
+  const {
+    data: gifs, 
+    error, 
+    loading, 
+    loadingNext, 
+    handleNextPage
+  } = useGifs(query);
   
   return (
     <div>

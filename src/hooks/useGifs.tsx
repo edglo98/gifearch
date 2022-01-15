@@ -10,7 +10,7 @@ interface OptionsProps {
 }
 
 const INITIAL_OPTIONS: OptionsProps = {
-  limit: 18,
+  limit: 20,
   page: 0,
 }
 
